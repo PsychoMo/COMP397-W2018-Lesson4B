@@ -20,8 +20,8 @@ module objects {
 
         }
 
-        public Update(): number {
-            return 0;
+        public Update(): void {
+            
         }
 
         public Main(): void {

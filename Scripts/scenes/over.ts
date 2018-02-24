@@ -1,10 +1,8 @@
 module scenes {
-    export class StartScene extends objects.Scene {
+    export class OverScene extends objects.Scene {
         // Private Instance Variables
-        private _welcomeLabel: objects.Label;
-        private _startButton: objects.Button;
-
-
+        private _overLabel: objects.Label;
+        private _backButton: objects.Button;
 
         // Public Properties
 
@@ -16,7 +14,7 @@ module scenes {
         }
 
         // Private Methods
-        private _startButtonClick(): void {
+        private _backButtonClick(): void {
             objects.Game.currentScene = config.Scene.PLAY;
         }
 
@@ -25,8 +23,8 @@ module scenes {
 
         // Initialize Game Variables and Objects
         public Start(): void {
-            this._welcomeLabel = new objects.Label("Welcome", "60px", "Consolas", "#000000", 320, 240, true);
-            this._startButton = new objects.Button(this.assetManager, "startButton", 320, 340);
+            this._overLabel = new objects.Label("Game Over", "40px", "Consolas", "#000000", 320, 240, true);
+            this._backButton = new objects.Button(this.assetManager, "backButton", 320, 340);
             this.Main();
         }
 
@@ -37,12 +35,13 @@ module scenes {
         // This is where the fun happens
         public Main(): void {
             // add the welcome label to the scene
-            this.addChild(this._welcomeLabel);
+            this.addChild(this._overLabel);
 
-            // add the startButton to the scene
-            this.addChild(this._startButton);
+            // add the backButton to the scene
+            this.addChild(this._backButton);
 
-            this._startButton.on("click", this._startButtonClick);
+            // event listeners
+            this._backButton.on("click", this._backButtonClick);
         }
     }
 }
